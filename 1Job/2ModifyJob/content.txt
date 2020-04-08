@@ -1,0 +1,96 @@
+!***> FitNesse Configurations
+
+!define TEST_SYSTEM {slim}
+!define COMMAND_PATTERN {java -Dlog4j.configuration=file:///${automated.testing.home}/log4j.properties -cp %p %m}
+!path ${automated.testing.home}/**.jar
+*!
+----
+
+# !*** Define Test Variables
+# !| script |
+# | set test variable | job | with | { "positionTitle": Technical Consultant, "qualification": Qualification, "description": This is a description } |
+# *!
+
+!*** Setup Screenshotting
+!| script  | 
+| set take error screenshots to | true |
+| set screenshot path to | C:\\FitNesseForAppian/FitNesseRoot/FitNesseForAppian/FIT/1Job/ScreenShots/ |
+| set stop on error to | true |
+***!
+
+!*** Initialization and Login to Employee Site
+!| script             |
+| login as recruiter |
+***!
+
+!*** Get the Current Details of the Job you want to modify
+!| script             |
+| $modifyJobTitle= | get grid | Jobs | column | Position | row | [1] | value |
+| $modifyQualification= | get grid | Jobs | column | Qualifications | row | [1] | value |
+| $modifySalary= | get grid | Jobs | column | Salary | row | [1] | value |
+| $modifyDescription= | get grid | Jobs | column | Description | row | [1] | value |
+***!
+
+!*** Set the Details Wrong and then click cancel
+!| script |
+| click on grid | Jobs | column | [5] | row | [1] |
+| wait for | 3 | seconds |
+| verify create job form fields |
+| clear field | Position Title |
+| clear field | Qualification |
+| clear field | Salary |
+| clear field | Description |
+| submit form |
+| verify form create job form validations |
+| populate field| Position Title| with| ${jobTitle} |
+| populate field| Qualification| with| ${qualification} |
+| populate field| Salary | with| ${salary} |
+| populate field| Description | with| ${description} |
+| cancel form submission |
+***!
+
+!*** Find that Job in the grid again
+!| script |
+| toggle box | Jobs Filters | visibility |
+| populate field| Position Title| with| $modifyJobTitle |
+| populate field| Description | with| $modifyDescription |
+| populate field| Minimum Salary | with| $modifySalary |
+| click on button | search |
+| wait for | 3 | seconds |
+| click on grid | Jobs | column | [5] | row | [1] |
+| verify create job form fields |
+| verify field | Position Title | contains | $modifyJobTitle |
+| verify field | Qualification | contains | $modifyQualification |
+| verify field | Salary | contains value| $modifySalary |
+| verify field | Description | contains | $modifyDescription |
+| clear field | Position Title |
+| populate field| Position Title| with| ${jobTitle} |
+| submit form |
+***!
+
+
+
+!*** Report Data Validation
+!| script |
+| toggle box | Jobs Filters | visibility |
+| populate field| Position Title| with| ${jobTitle} |
+| populate field| Description | with| $modifyDescription |
+| populate field| Minimum Salary | with| $modifySalary |
+| click on button | search |
+
+!| script |
+| verify grid | Jobs | column | Position | row | 1 | contains value | ${jobTitle} |
+| verify grid | Jobs | column | Qualifications | row | 1 | contains value | $modifyQualification |
+| verify grid | Jobs | column | Salary | row | 1 | contains value | $modifySalary |
+| verify grid | Jobs | column | Description | row | 1 | contains value | $modifyDescription |
+| click on button | reset |
+***!
+
+
+
+
+
+
+
+
+

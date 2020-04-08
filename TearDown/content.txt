@@ -1,0 +1,7 @@
+!*** Log out and tear down
+
+!| script |
+|logout   |
+|tear down|
+
+***!

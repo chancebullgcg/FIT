@@ -1,0 +1,22 @@
+!contents -R2 -g -p -f -h
+
+| scenario | verify create user form fields |
+| verify field | First Name | is present |
+| verify field | Last Name | is present |
+| verify field | Date of Birth | is present |
+| verify field | SSN | is present |
+| verify field | Address | is present |
+| verify field | State | is present |
+| verify field | City | is present |
+| verify field | Zip Code | is present |
+
+| scenario | verify form create user form validations |
+| verify field | First Name | contains validation message | A value is required |
+| verify field | Last Name | contains validation message | A value is required |
+| verify field | Date of Birth | contains validation message | A value is required |
+| verify field | SSN | contains validation message | A value is required |
+| verify field | Address | contains validation message | A value is required |
+| verify field | State | contains validation message | A value is required |
+| verify field | City | contains validation message | A value is required |
+| verify field | Zip Code | contains validation message | A value is required |
+

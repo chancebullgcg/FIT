@@ -1,0 +1,11 @@
+!*** Initialization
+
+This table initializes the fixture class and sets the environment defaults
+
+!| script             |com.appiancorp.ps.automatedtest.fixture.SitesFixture|
+|setup with           |CHROME                   |browser                  |
+|set appian url to    |https://training.groundswellcg.com/suite                                          |
+|set appian version to|19.4                                      |
+|set appian locale to |en_US                                       |
+***!
+

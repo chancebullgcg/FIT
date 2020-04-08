@@ -1,0 +1,68 @@
+!***> FitNesse Configurations
+
+!define TEST_SYSTEM {slim}
+!define COMMAND_PATTERN {java -Dlog4j.configuration=file:///${automated.testing.home}/log4j.properties -cp %p %m}
+!path ${automated.testing.home}/**.jar
+*!
+----
+
+# !*** Define Test Variables
+# !| script |
+# | set test variable | job | with | { "positionTitle": Technical Consultant, "qualification": Qualification, "description": This is a description } |
+# *!
+
+!*** Setup Screenshotting
+!| script  | 
+| set take error screenshots to | true |
+| set screenshot path to | C:\\FitNesseForAppian/FitNesseRoot/FitNesseForAppian/FIT/1Job/ScreenShots/ |
+| set stop on error to | true |
+***!
+
+!*** Initialization and Login to Employee Site
+!| script             |
+| login as recruiter |
+***!
+
+!*** Create Job Cancel and Form Validation
+!| script             |
+| click on card		  |Create Job |
+| verify create job form fields |
+| submit form |
+| verify form create job form validations |
+| cancel form submission |
+***!
+
+!*** Create Job Submission
+!| script             |
+|click on card		  |Create Job |
+| populate field| Position Title| with| ${jobTitle} |
+| populate field| Qualification| with| ${qualification} |
+| populate field| Salary | with| ${salary} |
+| populate field| Description | with| ${description} |
+| submit form |
+***!
+
+!*** Report Data Validation
+| script |
+| toggle box | Jobs Filters | visibility |
+| populate field| Position Title| with| ${jobTitle} |
+| populate field| Description | with| ${description} |
+| populate field| Minimum Salary | with| ${salary} |
+| click on button | search |
+
+| script |
+| verify grid | Jobs | column | Position | row | 1 | contains value | ${jobTitle} |
+| verify grid | Jobs | column | Qualifications | row | 1 | contains value | ${qualification} |
+| verify grid | Jobs | column | Salary | row | 1 | contains value | ${salary} |
+| verify grid | Jobs | column | Description | row | 1 | contains value | ${description} |
+| click on button | reset |
+***!
+
+
+
+
+
+
+
+
+

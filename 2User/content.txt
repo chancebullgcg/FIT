@@ -1,0 +1,17 @@
+!1 Test suite X
+!contents -R2 -g -p -f -h
+
+
+Use the following links to Navigate to Suites
+
+ * [[Job][http://localhost:8980/FitNesseForAppian.FIT.1Job]]
+ * [[User][http://localhost:8980/FitNesseForAppian.FIT.2User]]
+ * [[Application][http://localhost:8980/FitNesseForAppian.FIT.3Application]] 
+ * [[End To End][http://localhost:8980/FitNesseForAppian.FIT.4EndToEnd]]
+
+Other
+
+ * [[Error Screenshots][http://localhost:8980/FitNesseForAppian.FIT.ErrorScreenshots]]
+ * [[Scenario Library][http://localhost:8980/FitNesseForAppian.FIT.ScenarioLibrary]]
+ * [[Set Up][http://localhost:8980/FitNesseForAppian.FIT.SetUp]]
+ * [[Tear Down][http://localhost:8980/FitNesseForAppian.GCGApplication.TearDown]]

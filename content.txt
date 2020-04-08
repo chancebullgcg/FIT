@@ -1,0 +1,25 @@
+!1 Test Suite for the FIT Application
+
+!***> Job Variables
+#You can define all suite level variables here
+#They will be cascaded through the child pages provided that they are not redefined
+
+
+!define jobTitle { Appian Developer 4 }
+!define qualification { Appian Developer 4 qualification }
+!define salary {135000}
+!define description { This is a description for the Appian Level 4 job }
+
+*!
+
+!***> Job Variables
+#You can define all suite level variables here
+#They will be cascaded through the child pages provided that they are not redefined
+
+
+!define firstName { Appian Developer 4 }
+!define lastName { Appian Developer 4 qualification }
+!define dob {135000}
+!define description { This is a description for the Appian Level 4 job }
+
+*!

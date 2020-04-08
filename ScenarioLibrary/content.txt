@@ -1,0 +1,30 @@
+!*** Define Variables
+!define recruiter { roger.recruiter }
+!define systemAdmin { adam.admin } 
+*!
+
+
+!*** Login Scenarios
+
+| scenario  | login with user | textUsername |                                     |
+|login with username  | @textUsername                           |
+
+| scenario  | login as recruiter | 
+|login with username | roger.recruiter                           |
+
+| scenario  | login as admin |
+|login with username | adam.admin                          |
+
+***!
+
+
+!*** Form Scenarios
+
+| scenario  | submit form |
+| click on button  | Submit |
+
+| scenario  | cancel form submission | 
+| click on button | Cancel |
+
+
+***!

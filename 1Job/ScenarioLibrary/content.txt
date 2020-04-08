@@ -1,0 +1,29 @@
+!contents -R2 -g -p -f -h
+
+
+| scenario | verify create job form fields |
+| verify field | Position Title | is present |
+| verify field | Qualification | is present |
+| verify field | Salary | is present |
+| verify field | Description | is present |
+
+| scenario | verify form create job form validations |
+| verify field | Position Title | contains validation message | A value is required |
+| verify field | Qualification | contains validation message | A value is required |
+| verify field | Salary | contains validation message | A value is required |
+| verify field | Description | contains validation message | A value is required |
+
+
+#| scenario  | get job with all filters | jobTitle | description | salary | 
+#| populate field| Position Title| with| @jobTitle |
+#| populate field| Description | with| @description |
+#| populate field| Minimum Salary | with| @salary |
+#| click on button | search |
+
+
+
+#| scenario | verify jobs grid all columns | jobTitle | qualification | salary | description |
+#| verify grid | Jobs | column | Position | row | 1 | contains value | @jobTitle |
+#| verify grid | Jobs | column | Qualifications | row | 1 | contains value | @qualification |
+#| verify grid | Jobs | column | Salary | row | 1 | contains value | @salary |
+#| verify grid | Jobs | column | Description | row | 1 | contains value | @description |
